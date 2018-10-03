@@ -10,15 +10,17 @@
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>azure-storage-java</artifactId>
+        <groupId>com.microsoft.azure</groupId>
+        <version>10.0.0-Preview</version>
+    </parent>
+
     <modelVersion>4.0.0</modelVersion>
-
-    <groupId>com.microsoft.azure</groupId>
-    <artifactId>azure-storage-queue</artifactId>
+    <artifactId>queue</artifactId>
     <version>10.0.0-Preview</version>
-
     <name>Azure Storage Queue</name>
     <description>The Azure Storage Java Queue library.</description>
-    <url>https://github.com/Azure/azure-storage-java</url>
 
     <licenses>
         <license>
@@ -27,12 +29,6 @@
             <distribution>repo</distribution>
         </license>
     </licenses>
-
-    <scm>
-        <url>scm:git:https://github.com/Azure/azure-storage-java</url>
-        <connection>scm:git:git@github.com:Azure/azure-storage-java.git</connection>
-        <tag>HEAD</tag>
-    </scm>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -46,46 +42,6 @@
             <name>Microsoft</name>
         </developer>
     </developers>
-
-    <pluginRepositories>
-        <pluginRepository>
-            <id>bintray</id>
-            <name>Groovy Bintray</name>
-            <url>https://dl.bintray.com/groovy/maven</url>
-            <releases>
-                <updatePolicy>never</updatePolicy>
-            </releases>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </pluginRepository>
-    </pluginRepositories>
-
-    <dependencies>
-        <dependency>
-            <groupId>com.microsoft.rest.v2</groupId>
-            <artifactId>client-runtime</artifactId>
-            <version>2.0.0</version>
-        </dependency>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.12</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.spockframework</groupId>
-            <artifactId>spock-core</artifactId>
-            <scope>test</scope>
-            <version>1.1-groovy-2.4</version>
-        </dependency>
-        <dependency>
-            <groupId>org.codehaus.groovy</groupId>
-            <artifactId>groovy-all</artifactId>
-            <version>2.4.13</version>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
 
     <build>
         <testSourceDirectory>src/test/java</testSourceDirectory>
