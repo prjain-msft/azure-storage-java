@@ -17,7 +17,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>azure-storage-java-blob</artifactId>
+    <artifactId>azure-storage-blob</artifactId>
     <version>10.1.0</version>
     <name>Azure Storage Blob</name>
     <description>The Azure Storage Java Blob library.</description>
