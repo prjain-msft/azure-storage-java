@@ -50,12 +50,12 @@ public final class ServiceURL extends StorageURL {
     }
 
     /**
-     * Creates a {@Link QueueURL} object pointing a queue with given queue name uner the current storage account.
+     * Creates a {@link QueueURL} object pointing a queue with given queue name uner the current storage account.
      *
      * @param queueName
      *         The name of the queue which the URL will point to.
      *
-     * @return A {@Link QueueURL} object.
+     * @return A {@link QueueURL} object.
      */
     public QueueURL createQueueUrl(String queueName) {
         try {

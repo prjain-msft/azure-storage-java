@@ -72,7 +72,7 @@ public final class MessagesURL extends StorageURL {
      * @param messageId
      *         The messageID as a string.
      *
-     * @return A {@Link MessageIDURL} object.
+     * @return A {@link MessageIdURL} object.
      */
     public MessageIdURL createMessageIdUrl(String messageId) {
         try {

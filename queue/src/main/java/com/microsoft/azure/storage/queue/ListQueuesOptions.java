@@ -21,14 +21,14 @@ public final class ListQueuesOptions {
     private Integer maxResults;
 
     /**
-     * {@Link QueueListingDetails}
+     * {@link QueueListingDetails}
      */
     public QueueListingDetails details() {
         return details;
     }
 
     /**
-     * {@Link QueueListingDetails}
+     * {@link QueueListingDetails}
      */
     public ListQueuesOptions withDetails(QueueListingDetails details) {
         this.details = details;

@@ -139,14 +139,14 @@ public final class QueueURLParts {
     }
 
     /**
-     * A {@Link IPStyleEndPointInfo}
+     * A {@link IPStyleEndPointInfo}
      */
     public IPStyleEndPointInfo ipEndPointStyleInfo() {
         return ipStyleEndPointInfo;
     }
 
     /**
-     * A {@Link IPStyleEndPointInfo}
+     * A {@link IPStyleEndPointInfo}
      */
     public QueueURLParts withIPEndPointStyleInfo(IPStyleEndPointInfo ipStyleEndPointInfo) {
         this.ipStyleEndPointInfo = ipStyleEndPointInfo;

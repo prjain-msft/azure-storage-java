@@ -63,7 +63,7 @@ public final class QueueURL extends StorageURL {
      * To change the pipeline, create the MessagesURL and then call its WithPipeline method passing in the
      * desired pipeline object.
      *
-     * @return A {@Link MessagesURL} object with existing queue's pipeline.
+     * @return A {@link MessagesURL} object with existing queue's pipeline.
      */
     public MessagesURL createMessagesUrl() {
         try {
