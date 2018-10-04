@@ -15,7 +15,6 @@
     <groupId>com.microsoft.azure</groupId>
     <artifactId>azure-storage-java</artifactId>
     <packaging>pom</packaging>
-    <version>10.0.0-Preview</version>
 
     <name>Azure Storage Java</name>
     <description>The Azure Storage Java library.</description>
