@@ -45,6 +45,73 @@ public class Samples {
      *  This example shows how to get started using the Azure Storage Queue SDK for Java.
      */
     @Test
+    public void basicExample() throws MalformedURLException, InterruptedException{
+        String accountName = getAccountName();
+        String accountKey = getAccountKey();
+
+        // Use your Storage account's name and key to create a credential object; this is required to sign a SAS.
+        SharedKeyCredentials credential = new SharedKeyCredentials(accountName, accountKey);
+
+        /*
+        Create a request pipeline that is used to process HTTP(S) requests and responses. It requires your account
+        credentials. In more advanced scenarios, you can configure telemetry, retry policies, logging, and other
+        options. Also you can configure multiple pipelines for different scenarios.
+         */
+        HttpPipeline pipeline = StorageURL.createPipeline(credential);
+
+        /*
+        From the Azure portal, get your Storage account queue service URL endpoint.
+        The URL typically looks like this:
+         */
+        URL u = new URL(String.format(Locale.ROOT, "https://%s.queue.core.windows.net", accountName));
+
+        /*
+        Create a URL that references a queue in your Azure Storage account.
+        This returns a QueueURL object that wraps the queue's URL and a request pipeline (inherited from serviceURL).
+        */
+        QueueURL qu = new ServiceURL(u, pipeline).
+                createQueueUrl(queuePrefix + String.valueOf(new Random().nextInt(100000) + 1));
+
+        // Creates a queue Single which stages an operation to create a queue.
+        Single<QueueCreateResponse> queueCreateSingle = qu.create();
+
+        // Create messageUrl which allows to enqueue, dequeue and to further manipulate the queues message.
+        MessagesURL mu = qu.createMessagesUrl();
+
+        queueCreateSingle
+                .flatMap(response ->
+                        mu.enqueue("This is message 1"))
+                .flatMap(response ->
+                        mu.enqueue("This is message 2"))
+                .flatMap(response ->
+                        mu.dequeue(1, 5))
+                .doOnSuccess(messageDequeueResponse -> {
+                    if (messageDequeueResponse.body().get(0).messageId().startsWith("This is message")){
+                        throw new Exception("The dequeued message does not match enqueued message.");
+                    }
+                })
+                .flatMap(response ->
+                        mu.dequeue(1, 5))
+                .doOnSuccess(messageDequeueResponse -> {
+                    if (messageDequeueResponse.body().get(0).messageId().startsWith("This is message")){
+                        throw new Exception("The dequeued message does not match enqueued message.");
+                    }
+                })
+                .flatMap(response ->
+                        qu.delete())
+                /*
+                This will synchronize all the above operations. This is strongly discouraged for use in production as
+                it eliminates the benefits of asynchronous IO. We use it here to enable the sample to complete and
+                demonstrate its effectiveness.
+                 */
+                .blockingGet();
+    }
+
+    /*
+     *  This example mimics some arbitrary number of clients continuously sending messages up to a queue in a parallel and
+     *  a server dequeuing the messages and processing them.
+     */
+    @Test
     public void example() throws MalformedURLException, InterruptedException {
         String accountName = getAccountName();
         String accountKey = getAccountKey();
