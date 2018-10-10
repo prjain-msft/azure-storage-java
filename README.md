@@ -166,8 +166,8 @@ The following is a quick example on how to enqueue some messages to an azure que
 
 ```java
 public class Sample {
-    /*
-     *  This example shows how to get started using the Azure Storage Queue SDK for Java.
+    /**
+    *  This example shows how to get started using the Azure Storage Queue SDK for Java.
     */
     public void basicExample() throws MalformedURLException, InterruptedException{
         String accountName = getAccountName();
